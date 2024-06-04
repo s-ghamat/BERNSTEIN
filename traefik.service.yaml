@@ -6,8 +6,12 @@ metadata:
 spec:
   ports:
   - port: 80
+    name: http
+    protocol: TCP
     nodePort: 30021
   - port: 8080
+    name: admin
+    protocol: TCP
     nodePort: 30042
   selector:
     app: traefik
