@@ -21,7 +21,7 @@ spec:
         image: epitechcontent/t-dop-600-poll:k8s
         resources:
           limits:
-            memory: "128M"
+            memory: "128Mi"
         envFrom:
           - configMapRef:
               name: redis-configmap
@@ -35,5 +35,5 @@ spec:
               - key: app
                 operator: In
                 values:
-                - epitech-s4ql
+                - poll
             topologyKey: "kubernetes.io/hostname"

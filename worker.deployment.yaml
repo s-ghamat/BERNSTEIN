@@ -21,7 +21,7 @@ spec:
         image: epitechcontent/t-dop-600-worker:k8s
         resources:
           limits:
-            memory: "256M"
+            memory: "256Mi"
         envFrom:
           - configMapRef:
               name: postgres-configmap
@@ -37,6 +37,5 @@ spec:
               - key: app
                 operator: In
                 values:
-                - epitech-s4ql
-                - epitech-s4qe
+                - worker
             topologyKey: "kubernetes.io/hostname"
