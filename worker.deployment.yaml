@@ -3,6 +3,8 @@ kind: Deployment
 metadata:
   name: worker
   namespace: default
+  labels:
+    app: worker
 spec:
   replicas: 1
   selector:
@@ -13,25 +15,28 @@ spec:
       labels:
         app: worker
     spec:
+      restartPolicy: Always
       containers:
       - name: worker
         image: epitechcontent/t-dop-600-worker:k8s
-        env:
-        - name: REDIS_HOST
-          value: redis
-        - name: POSTGRES_HOST
-          value: postgres
-        - name: POSTGRES_PORT
-          value: "5432"
-        - name: POSTGRES_DB
-          value: mydb
-        - name: POSTGRES_USER
-          value: myuser
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: postgres-secret
-              key: POSTGRES_PASSWORD
         resources:
           limits:
-            memory: "256Mi"
+            memory: "256M"
+        envFrom:
+          - configMapRef:
+              name: postgres-configmap
+          - configMapRef:
+              name: redis-configmap
+          - secretRef:
+              name: postgres-secret
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - epitech-s4ql
+                - epitech-s4qe
+            topologyKey: "kubernetes.io/hostname"
