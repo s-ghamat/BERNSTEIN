@@ -17,7 +17,7 @@ spec:
     spec:
       restartPolicy: Always
       containers:
-      - name: postgres
+      - name: postrgres
         image: postgres:12
         envFrom:
         - secretRef:
@@ -41,5 +41,5 @@ spec:
               - key: app
                 operator: In
                 values:
-                - postgres
+                - epitech-s4qe
             topologyKey: "kubernetes.io/hostname"

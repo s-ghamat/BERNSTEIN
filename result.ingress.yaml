@@ -1,4 +1,4 @@
-apiVersion: networking.k8s.io/v1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: result-ingress
@@ -6,7 +6,6 @@ metadata:
   labels:
     app: ingress
   annotations:
-    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
@@ -14,9 +13,6 @@ spec:
     http:
       paths:
       - path: /
-        pathType: Prefix
         backend:
-          service:
-            name: result
-            port:
-              number: 80
+          serviceName: result-service
+          servicePort: http

@@ -21,7 +21,7 @@ spec:
         image: epitechcontent/t-dop-600-result:k8s
         resources:
           limits:
-            memory: "128Mi"
+            memory: "128M"
         envFrom:
         - secretRef:
             name: postgres-secret
@@ -37,5 +37,5 @@ spec:
               - key: app
                 operator: In
                 values:
-                - result
+                - epitech-s4qe
             topologyKey: "kubernetes.io/hostname"

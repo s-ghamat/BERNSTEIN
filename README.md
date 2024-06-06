@@ -1,34 +1,39 @@
-### T-DOP-603-STG_18
----
-Setayesh GHAMAT and Massoud SHAMS
+Popeye
+===
 
-Language: Kubernetes, Yaml
+Time:       3 weeks
 
----
+Team:       2
 
-**Orchestration** refers to arranging various components of a system so they can be executed seamlessly by a unified infrastructure, much like a conductor organizes an orchestra. **Leonard Bernstein**, renowned for his exceptional compositions such as the soundtrack of West Side Story, was a maestro of his craft.
+Language:   Kubernetes, Yaml
 
-In this project, we will become the Leonard Bernstein of container orchestration!
 
-We will be using one of the most popular platforms for this task: [**Kubernetes**](https://kubernetes.io/). Kubernetes is an open-source platform designed for managing containerized applications and services at scale and automatically.
+The project
+----
 
-Our task is to deploy an **application on a multi-host cluster** using Kubernetes and to utilize **Traefik** as a reverse proxy and load balancer. The application we will work on is a simple **web poll application**.
+**Orchestration** is the arrangement of a piece of music in parts so that it can be played by an orchestra *(from the Oxford Advanced Learner’s Dictionary)*. In other terms, it is the process of organizing the different components of a system in order for them to be *(correctly)* executed by a generic infrastructure. **Leonard Bernstein** was an exceptional composer (his most famous work being the soundtrack of West Side Story), pianist, and conductor in his days.
 
-### Application Components:
-1. **Poll**: A Flask Python web application that gathers votes and pushes them into a Redis queue.
-2. **Redis Queue**: Holds the votes from the Poll application, waiting to be processed by the Worker.
-3. **Worker**: A Java application that consumes votes from the Redis queue and stores them in a PostgreSQL database.
-4. **PostgreSQL Database**: Persistently stores the votes processed by the Worker.
-5. **Result**: A Node.js web application that retrieves votes from the database and displays the results.
+During this project, you are going to become the Leonard Bernstein of containers!
 
-### Environment:
+The orchestra you are going to conduct is one of the most popular of its kind: [**Kubernetes**](https://kubernetes.io/). Kubernetes is an open-source platform that allows you to manage containerized applications and services, in a scalable and automatic way.
 
-To set up your environment, you will need at least one Kubernetes master and two nodes (workers). While you can run it locally, it is highly recommended to use a “Kubernetes as a Service” platform for ease and scalability.
+You will deploy an **application to a multi-host cluster** using Kubernetes, and you will use **Traefik** as a reverse proxy and load balancer. The application you will be working on during this project is a simple **web poll application**.
 
-Recommended platforms include:
-- Amazon Elastic Kubernetes Service (EKS)
-- Google Kubernetes Engine (GKE)
-- Digital Ocean Kubernetes
 
-Setting up a full Kubernetes cluster locally can be complex, and Minikube is not designed for multi-node clusters, which are required for this project.
+There are five elements constituting the application:
+* **Poll**, a Flask Python web application that gathers votes and push them into a Redis queue.
+* **A Redis queue**, which holds the votes sent by the Poll application, awaiting for them to be consumed bythe Worker.
+* **The Worker**, a Java application which consumes the votes being in the Redis queue, and stores them intoa PostgreSQL database.
+* **A PostgreSQL database**, which (persistently) stores the votes stored by the Worker.
+* **Result**, a Node.js web application that fetches the votes from the database and displays the. . . well, result. ;)
 
+
+# ENVIRONMENT
+
+You will need at least 1 Kubernetes master and 2 nodes (workers). You can run it locally, but it is highly recommended to use a “Kubernetes as a Service” platform.
+
+Examples of such platforms include (but are not limited to) Amazon Elastic Kubernetes Service,Google Ku-bernetes Engine, and Digital Ocean.
+
+Installing a full Kubernetes cluster locally is complex. Minikube is also not built for multi-node clusters (which you needfor your project).
+
+Author [**Corentin COUTRET-ROZET**](https://github.com/sheiiva) and [**Hugo LACHKAR**](https://github.com/HugoTkBCN)

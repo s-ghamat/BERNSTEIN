@@ -21,16 +21,6 @@ spec:
         image: redis:5.0
         ports:
         - containerPort: 6379
-        resources:
-          limits:
-            memory: "128Mi"
-        volumeMounts:
-        - mountPath: /redis-master
-          name: redis-volume
-      volumes:
-      - name: redis-volume
-        configMap:
-          name: redis-config
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -39,5 +29,5 @@ spec:
               - key: app
                 operator: In
                 values:
-                - redis
+                - epitech-s4ql
             topologyKey: "kubernetes.io/hostname"
