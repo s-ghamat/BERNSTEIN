@@ -15,7 +15,7 @@ spec:
       restartPolicy: Always
       containers:
       - name: cadvisor-daemonset
-        image: google/cadvisor:latest
+        image: gcr.io/cadvisor/cadvisor:latest
         ports:
           - name: http
             containerPort: 8080
