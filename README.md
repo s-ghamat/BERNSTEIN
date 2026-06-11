@@ -1,4 +1,4 @@
-# Kubernetes Survey Platform
+# BERNSTEIN
 
 Container orchestration project for deploying and monitoring a multi-service survey application on Kubernetes.
 
