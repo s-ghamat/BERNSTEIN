@@ -1,62 +1,163 @@
-# ☸️ Kubernetes Survey Platform (Traefik + Monitoring)
+# Kubernetes Survey Platform
 
-## 📌 Project Overview
+Container orchestration project for deploying and monitoring a multi-service survey application on Kubernetes.
 
-This project focuses on **container orchestration and service management** using **Kubernetes**, built around a **web-based survey application**.
+The platform uses Kubernetes for service management, Traefik for ingress routing, and cAdvisor for container monitoring.
 
-It demonstrates how to deploy and operate a multi-service system in a containerized, distributed environment, using **Traefik** as an ingress controller and **cAdvisor** for monitoring.
+## Overview
 
----
+This project demonstrates how to deploy a distributed web application in a Kubernetes environment.
 
-## 🧱 Architecture & Technologies
+The application is composed of multiple services written with Python, Java, and Node.js. Each service runs in a container and is managed through Kubernetes deployments, services, and networking rules.
 
-The application is composed of multiple services, deployed as containers and managed by Kubernetes:
+## Architecture
 
-* **Python** — backend service / API
-* **Java** — service layer / business logic
-* **Node.js** — frontend or additional service component
-* **Kubernetes** — orchestration (deployments, services, scaling)
-* **Traefik** — ingress routing and reverse proxy
-* **cAdvisor** — container monitoring and resource metrics
+```text
+Client
+  ↓
+Traefik Ingress
+  ↓
+Kubernetes Services
+  ↓
+Python / Java / Node.js Containers
+  ↓
+cAdvisor Monitoring
+```
 
----
+## Components
 
-## ⚙️ Key Features
+| Component  | Role                                      |
+| ---------- | ----------------------------------------- |
+| Python     | Backend API                               |
+| Java       | Business logic service                    |
+| Node.js    | Frontend or additional service layer      |
+| Kubernetes | Container orchestration                   |
+| Traefik    | Ingress controller and reverse proxy      |
+| cAdvisor   | Container monitoring and resource metrics |
 
-* Multi-service deployment on Kubernetes
-* Service discovery and internal networking
-* HTTP routing via Traefik Ingress
-* Container and resource monitoring with cAdvisor
-* Hands-on experience with distributed systems concepts
+## Features
 
----
+* Multi-service Kubernetes deployment
+* Containerized application architecture
+* Internal service discovery
+* Kubernetes services and deployments
+* HTTP routing with Traefik Ingress
+* Container monitoring with cAdvisor
+* Resource usage tracking
+* Distributed infrastructure practice
 
-## 📈 Monitoring
+## Monitoring
 
-Monitoring is implemented using **cAdvisor**, providing visibility into:
+Monitoring is provided by cAdvisor.
 
-* CPU and memory usage
-* container health and runtime metrics
-* resource consumption per service
+Tracked metrics include:
 
----
+* CPU usage
+* Memory usage
+* Container health
+* Runtime metrics
+* Resource consumption per service
 
-## 🎯 Learning Outcomes
+## Requirements
 
-This project provided practical experience in:
+* Docker
+* Kubernetes cluster
+* kubectl
+* Traefik
+* cAdvisor
 
-* Designing and deploying containerized applications on Kubernetes
+Check your Kubernetes connection:
+
+```bash
+kubectl cluster-info
+```
+
+Check available nodes:
+
+```bash
+kubectl get nodes
+```
+
+## Deployment
+
+Apply the Kubernetes manifests:
+
+```bash
+kubectl apply -f k8s/
+```
+
+Check deployed resources:
+
+```bash
+kubectl get pods
+kubectl get services
+kubectl get ingress
+```
+
+## Traefik
+
+Traefik is used as the ingress controller.
+
+It routes external HTTP traffic to the correct internal Kubernetes service.
+
+Check ingress resources:
+
+```bash
+kubectl get ingress
+```
+
+## cAdvisor
+
+cAdvisor provides container-level monitoring.
+
+Check the monitoring service:
+
+```bash
+kubectl get pods
+kubectl get services
+```
+
+Port-forward if needed:
+
+```bash
+kubectl port-forward service/cadvisor 8080:8080
+```
+
+Then open:
+
+```text
+http://localhost:8080
+```
+
+## Project Structure
+
+```text
+.
+├── k8s/
+├── python/
+├── java/
+├── node/
+├── monitoring/
+├── traefik/
+└── README.md
+```
+
+## Learning Outcomes
+
+This project focuses on practical Kubernetes and infrastructure skills:
+
+* Deploying containerized applications on Kubernetes
+* Managing pods, deployments, and services
 * Configuring ingress routing with Traefik
-* Working with distributed infrastructure concepts (services, pods, scaling)
-* Monitoring container performance and resource usage
+* Understanding service discovery and internal networking
+* Monitoring containers with cAdvisor
+* Working with distributed system concepts
 
----
+## Academic Context
 
-## 🛠️ Skills
+Project type: Kubernetes and container orchestration
+Focus: Distributed systems, ingress routing, monitoring, and service management
 
-* **Kubernetes**
-* **Traefik**
-* Container orchestration & management
-* Distributed systems
-* Monitoring with **cAdvisor**
-* Python / Java / Node.js
+## Author
+
+Setayesh Ghamat
